@@ -1,0 +1,23 @@
+name: {{theme-name}}
+type: theme
+description: {{theme-name}} theme.
+package: Derby
+core: 8.x
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+libraries:
+  - {{theme-name}}/global
+libraries-override:
+  system/base: false
+  system/admin: false
+  system/maintenance: false
+  system/drupal.system: false
+  system/drupal.system.modules: false
+  system/diff: false
+  system/drupal.system.date: false
+  contextual/drupal.contextual-links: false
+  quickedit/quickedit: false
+  views/views.module: false
+

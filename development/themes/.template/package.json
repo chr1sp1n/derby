@@ -11,7 +11,11 @@
   },
   "author": "chr1sp1n-dev",
   "license": "ISC",
+  "devDependencies": {
+    "@chr1sp1n-dev/drussets": "git+https://github.com/chr1sp1n/drussets.git"
+  },
   "dependencies": {
-    "@chr1sp1n-dev/drussets": "github:chr1sp1n/drussets#1.0"
+    "jquery": "^3.4",
+    "bootstrap": "^4.3"
   }
 }

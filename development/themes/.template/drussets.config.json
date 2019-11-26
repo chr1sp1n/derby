@@ -1,8 +1,8 @@
 {
 	"path":{
 		"temp": "./.tmp",
-		"dev": 	"../../../web/themes/custom/theme_name",
-		"dist": "../../../web/themes/custom/theme_name"
+		"dev": 	"../../../web/themes/custom/{{theme-name}}",
+		"dist": "../../../web/themes/custom/{{theme-name}}"
 	},
 	"assets":{
 		"path": "./src",

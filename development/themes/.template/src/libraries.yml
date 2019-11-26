@@ -1,0 +1,7 @@
+global:
+  css:
+    base:
+      libraries/global/css/styles.css: {}
+  js:
+    libraries/global/js/main.js: {}
+  dependencies:
