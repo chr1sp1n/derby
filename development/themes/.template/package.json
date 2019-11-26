@@ -1,0 +1,17 @@
+{
+  "name": "drupal-theme-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "drussets init",
+    "watch": "drussets watch",
+    "dev": "drussets dev",
+    "dist": "drussets dist"
+  },
+  "author": "chr1sp1n-dev",
+  "license": "ISC",
+  "dependencies": {
+    "@chr1sp1n-dev/drussets": "github:chr1sp1n/drussets#1.0"
+  }
+}
