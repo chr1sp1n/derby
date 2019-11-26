@@ -48,7 +48,8 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "scripts/composer/ScriptHandler.php",
+            "scripts/derby/Derby.php"
         ],
         "files": ["load.environment.php"]
     },
@@ -64,7 +65,12 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
+        ],
+
+        "derby-generate-theme": "Derby\\ComposerScripts::generateTheme",
+
+        "derby-generate-module": "Derby\\ComposerScripts::generateModule"
+
     },
     "extra": {
         "composer-exit-on-patch-failure": true,

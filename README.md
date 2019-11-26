@@ -8,3 +8,5 @@ Before start developing drupal:
 
 
 
+vendor/bin/drush php-eval 'echo \Drupal\Component\Utility\Crypt::randomBytesBase64(55)' > sites/default/salt.txt
+vendor/bin/drush config-set system.file path.temporary ../tmp -y
