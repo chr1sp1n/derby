@@ -1,30 +1,57 @@
 <?php
 
+namespace Derby;
+
 /**
  * @file
- * Contains \Derby\composer\ScriptHandler.
+ * Contains \Derby\Derby.
+ *
+ * @package Derby
+ * @author chr1sp1n-dev <chr1sp1n.dev@gmail.com>
  */
-
-namespace Derby;
 
 use Composer\Script\Event;
 
-class ComposerScripts{
+/**
+ * Undocumented class.
+ *
+ * @package Derby
+ */
+class Derby {
 
-  public static function init(Event $event){
+  /**
+   * Undocumented function.
+   *
+   * @param Composer\Script\Event $event
+   *   Composer event.
+   *
+   */
+  public static function init(Event $event) {
     exit('here');
   }
 
-  public static function generateTheme(Event $event){
+  /**
+   * Undocumented function.
+   *
+   * @param Composer\Script\Event $event
+   *   Composer event.
+   */
+  public static function generateTheme(Event $event) {
     require_once $event
       ->getComposer()
       ->getConfig()
-      ->get('vendor-dir').'/autoload.php';
+      ->get('vendor-dir') . '/autoload.php';
 
     exit('here');
   }
 
-  public static function generateModule(Event $event){
+  /**
+   * Undocumented function.
+   *
+   * @param Composer\Script\Event $event
+   *   Composer event.
+   */
+  public static function generateModule(Event $event) {
     exit('here');
   }
 
