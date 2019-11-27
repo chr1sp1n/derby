@@ -11,11 +11,11 @@ namespace Derby;
  * @author chr1sp1n-dev <chr1sp1n.dev@gmail.com>
  */
 
-use Chr1sp1n\Console;
 use Composer\Script\Event;
 use DrupalFinder\DrupalFinder;
 use Drupal\Component\Utility\Crypt;
 use Symfony\Component\Filesystem\Filesystem;
+use Drupal\Console\Core\Utils\StringConverter;
 
 
 /**
@@ -37,17 +37,15 @@ class Derby {
   ];
 
   /**
-   * Theme files to be renamed or edit
+   * String to replace.
    *
-   * @var array
+   * @var string
    *
    */
-  protected static $themeFiles = [
-    '__theme_name__.info.yml'       => NULL,
-    '__theme_name__.libraries.yml'  => NULL,
-    '__theme_name__.theme'          => NULL,
-    'drussets.config.json'          => '__theme_name__'
-  ];
+  protected static $replaceString = '__theme_name__';
+
+  protected static $themeDevelopmentFolder = 'development/themes';
+  protected static $themeTemplateFolder = '.template';
 
   /**
    * Derby initialization script.
@@ -100,13 +98,47 @@ class Derby {
   public static function generateTheme(Event $event) {
     $args = $event->getArguments();
     if(empty($args)){
-      echo "[ERRO] Parameter theme name needed.";
+      echo "[ERRO] Parameter theme name needed." . PHP_EOL;
       exit();
     }
 
+    $vendorDirectory = $event->getComposer()->getConfig()->get('vendor-dir');
+    require_once  $vendorDirectory . '/autoload.php';
+
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $drupalRoot = $drupalFinder->getDrupalRoot();
+
+    $stringConverter = new StringConverter();
+    $themeName = $stringConverter->createMachineName($args[0]);
+
+    $directory = new \RecursiveDirectoryIterator(self::$themeDevelopmentFolder . '/' . self::$themeTemplateFolder);
+    $iterator = new \RecursiveIteratorIterator($directory);
+
+    foreach ($iterator as $filePath) {
+      if( $filePath->isDir() ){
+        $path = str_replace( self::$themeTemplateFolder, $themeName, $filePath->getPathname() );
+        $path = $drupalRoot . '/../' . $path;
+        if( !file_exists($path) ){
+          mkdir( $path, 0775, true );
+        }
+      }
+    }
+
+    foreach ($iterator as $filePath) {
+      if( !$filePath->isDir() ){
+        $file = $filePath->getPathname();
+        $data = file_get_contents($file);
+        $data = str_replace(self::$replaceString, $themeName, $data);
+        $file = str_replace( self::$themeTemplateFolder, $themeName, $file);
+        $fileTheme = $drupalRoot . '/../' . str_replace(self::$replaceString, $themeName, $file);
+        if(!file_exists($fileTheme)){
+          file_put_contents($fileTheme, $data);
+        }
+      }
+    }
 
 
-    $fs = new Filesystem();
     exit();
   }
 

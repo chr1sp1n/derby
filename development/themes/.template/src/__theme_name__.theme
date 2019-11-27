@@ -1,0 +1,19 @@
+<?php
+
+
+//1°
+function __theme_name___preprocess_node (&$variables){
+}
+
+//2°
+function __theme_name___preprocess_html(&$variables){
+  $node = \Drupal::routeMatch()->getParameter('node');
+}
+
+//3°
+function __theme_name___preprocess_page(&$variables){
+
+}
+
+
+?>
