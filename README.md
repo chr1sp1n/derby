@@ -23,3 +23,5 @@ Modules and themes are equipped with Drussets utility tool. Below enabled comman
 - ```npm run watch``` (build theme every time a file or folder has been changed)
 
 
+vendor/bin/drush php-eval 'echo \Drupal\Component\Utility\Crypt::randomBytesBase64(55)' > sites/default/salt.txt
+vendor/bin/drush config-set system.file path.temporary ../tmp -y
