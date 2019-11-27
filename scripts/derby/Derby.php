@@ -44,7 +44,18 @@ class Derby {
    */
   protected static $replaceString = '__theme_name__';
 
+  /**
+   * Theme development folder,
+   *
+   * @var string
+   */
   protected static $themeDevelopmentFolder = 'development/themes';
+
+  /**
+   * Theme template folder.
+   *
+   * @var string
+   */
   protected static $themeTemplateFolder = '.template';
 
   /**
@@ -56,6 +67,7 @@ class Derby {
    * @author chr1sp1n-dev <chr1sp1n.dev@gmail.com>
    */
   public static function init(Event $event) {
+    self::showBanner();
     $vendorDirectory = $event->getComposer()->getConfig()->get('vendor-dir');
     require_once  $vendorDirectory . '/autoload.php';
 
@@ -96,6 +108,7 @@ class Derby {
    *   Composer event.
    */
   public static function generateTheme(Event $event) {
+    self::showBanner();
     $args = $event->getArguments();
     if(empty($args)){
       echo "[ERRO] Parameter theme name needed." . PHP_EOL;
@@ -149,12 +162,39 @@ class Derby {
    *   Composer event.
    */
   public static function generateModule(Event $event) {
-    $fs = new Filesystem();
+    self::showBanner();
+    $args = $event->getArguments();
+    if(empty($args)){
+      echo "[ERRO] Parameter theme name needed." . PHP_EOL;
+      exit();
+    }
+
+    $vendorDirectory = $event->getComposer()->getConfig()->get('vendor-dir');
+    require_once  $vendorDirectory . '/autoload.php';
+
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $drupalRoot = $drupalFinder->getDrupalRoot();
+
+    $stringConverter = new StringConverter();
+    $moduleName = $stringConverter->createMachineName($args[0]);
+
     exit();
   }
 
   private static function showBanner(){
+    $derby = <<<DERBY
+              888                888
+          e88 888  ,e e,  888,8, 888 88e  Y8b Y888P
+         d888 888 d88 88b 888  " 888 888b  Y8b Y8P
+         Y888 888 888   , 888    888 888P   Y8b Y
+          "88 888  "YeeP" 888    888 88"     888
+                                             888
+                          hibo © - v1.0.1    888
+DERBY;
 
+    echo PHP_EOL . $derby . PHP_EOL . PHP_EOL;
   }
+
 }
 
