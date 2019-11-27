@@ -1,6 +1,6 @@
-name: {{theme-name}}
+name: __theme_name__
 type: theme
-description: {{theme-name}} theme.
+description: __theme_name__ theme.
 package: Derby
 core: 8.x
 regions:
@@ -8,7 +8,7 @@ regions:
   content: 'Content'
   footer: 'Footer'
 libraries:
-  - {{theme-name}}/global
+  - __theme_name__/global
 libraries-override:
   system/base: false
   system/admin: false

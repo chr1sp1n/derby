@@ -5,3 +5,22 @@ global:
   js:
     libraries/global/js/main.js: {}
   dependencies:
+    __theme_name__/bootstrap
+
+
+bootstrap:
+  css:
+    base:
+      libraries/bootstrap/css/bootstrap.css: {}
+  js:
+    libraries/bootstrap/js/util.js: {}
+    libraries/bootstrap/js/alert.js: {}
+    libraries/bootstrap/js/carousel.js: {}
+    libraries/bootstrap/js/collapse.js: {}
+    libraries/bootstrap/js/dropdown.js: {}
+    libraries/bootstrap/js/popover.js: {}
+    libraries/bootstrap/js/scrollspy.js: {}
+    libraries/bootstrap/js/modal.js: {}
+    libraries/bootstrap/js/tab.js: {}
+    libraries/bootstrap/js/toast.js: {}
+    libraries/bootstrap/js/tooltip.js: {}

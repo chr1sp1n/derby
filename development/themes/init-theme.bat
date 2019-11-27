@@ -18,7 +18,7 @@ IF [%1] == [] (
       ECHO [INFO] Cloning template theme...
       Xcopy /E /I ".template" "%1"
       IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
-      powershell -Command "(gc %1\drussets.config.json) -replace '{{theme-name}}', '%1' | Out-File -encoding ASCII %1\drussets.config.json"
+      powershell -Command "(gc %1\drussets.config.json) -replace '__theme_name__', '%1' | Out-File -encoding ASCII %1\drussets.config.json"
       IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
 
       CD "%1\src\"
@@ -31,9 +31,11 @@ IF [%1] == [] (
       REN ".theme" "%1.theme"
       IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
 
-      powershell -Command "(gc %1.theme) -replace 'theme_', '%1_' | Out-File -encoding ASCII %1.theme"
+      powershell -Command "(gc %1.theme) -replace '__theme_name__', '%1_' | Out-File -encoding ASCII %1.theme"
       IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
-      powershell -Command "(gc %1.info.yml) -replace '{{theme-name}}', '%1' | Out-File -encoding ASCII %1.info.yml"
+      powershell -Command "(gc %1.info.yml) -replace '__theme_name__', '%1' | Out-File -encoding ASCII %1.info.yml"
+      IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
+      powershell -Command "(gc %1.libraries.yml) -replace '__theme_name__', '%1' | Out-File -encoding ASCII %1.libraries.yml"
       IF %ERRORLEVEL% NEQ 0 ( SET ERROR=%ERRORLEVEL% )
 
 
