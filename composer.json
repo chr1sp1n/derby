@@ -61,15 +61,16 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "Derby\\Derby::init"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
 
-        "derby-generate-theme": "Derby\\ComposerScripts::generateTheme",
-
-        "derby-generate-module": "Derby\\ComposerScripts::generateModule"
+        "derby-init": "Derby\\Derby::init",
+        "derby-generate-theme": "Derby\\Derby::generateTheme",
+        "derby-generate-module": "Derby\\Derby::generateModule"
 
     },
     "extra": {
