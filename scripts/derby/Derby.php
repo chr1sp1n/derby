@@ -7,7 +7,7 @@ namespace Derby;
  * Contains \Derby\Derby.
  *
  * @package Derby
- * @version 1.0.1
+ * @version 1.0.2
  * @author chr1sp1n-dev <chr1sp1n.dev@gmail.com>
  */
 
@@ -255,7 +255,7 @@ class Derby {
          Y888 888 888   , 888    888 888P   Y8b Y
           "88 888  "YeeP" 888    888 88"     888
                                              888
-                                   v1.0.1    888
+                                   v1.0.2    888
 
 
 DERBY;

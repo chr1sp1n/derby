@@ -1,6 +1,6 @@
 
 # DERBY - Drupal toolkit
-v1.0.1 - 2019-11-28
+v1.0.2 - 2019-11-28
 
 ## Initialization:
 - clone repository ```git clone -b 1.0.1 --single-branch https://github.com/chr1sp1n/derby.git```
