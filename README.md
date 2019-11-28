@@ -28,7 +28,7 @@ ___
 
 ___
 
-### TO-TO:
+### TO-DO:
 - Add Content types data extractor module by default
 - Set files and folder permission in unix based os;
 - Let specify theme or module human readable name
