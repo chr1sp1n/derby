@@ -3,7 +3,7 @@
 v1.0.2 - 2019-11-28
 
 ## Initialization:
-- clone repository ```git clone -b 1.0.1 --single-branch https://github.com/chr1sp1n/derby.git```
+- clone repository ```git clone -b 1.0.2 --single-branch https://github.com/chr1sp1n/derby.git```
 - import ```init/derby.init-db.sql``` in your db engine
 - edit ```.env``` file with your database references
 - execute ```composer install```
