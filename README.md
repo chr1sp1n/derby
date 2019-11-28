@@ -24,3 +24,8 @@ To push new theme or module on Drupal webroot use Drussets utility with followin
 - ```npm run dev``` (build theme or module in development mode)
 - ```npm run dist``` (build theme or module in distribution mode)
 - ```npm run watch``` (build theme or module every changes to files or folders)
+
+
+
+TO-TO:
+- Set files and folder permission for unix based os;

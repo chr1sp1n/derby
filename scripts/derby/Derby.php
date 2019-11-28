@@ -103,7 +103,7 @@ class Derby {
     }
 
     echo "[INFO] Sets Drupal temporary folder." . \PHP_EOL;
-    echo exec($vendorDirectory . '/bin/drush config-set system.file path.temporary ../tmp -y');
+    echo exec($vendorDirectory . '/bin/drush config-set system.file path.temporary ../.tmp -y');
 
     if (!$fs->exists($drupalRoot . '/sites/default/salt.txt')) {
       echo "[INFO] Generates salt.txt file." . \PHP_EOL;
@@ -113,6 +113,13 @@ class Derby {
       }
     }
 
+    if ($fs->exists($drupalRoot . '/sites/default/settings.php')) {
+      echo "[INFO] Adding private folder configuration." . \PHP_EOL;
+      $privateFolderConfig = "\$settings['file_private_path'] = '" . $drupalRoot . "/../private';";
+      file_put_contents($drupalRoot . '/sites/default/settings.php', $privateFolderConfig, FILE_APPEND);
+    }
+
+    echo "[.OK.] Initialization complete." . \PHP_EOL;
     echo PHP_EOL;
     exit();
   }
