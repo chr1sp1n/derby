@@ -1,0 +1,21 @@
+{
+  "name": "derby_theme_theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "drussets init",
+    "watch": "drussets watch",
+    "dev": "drussets dev",
+    "dist": "drussets dist"
+  },
+  "author": "chr1sp1n-dev",
+  "license": "ISC",
+  "devDependencies": {
+    "@chr1sp1n-dev/drussets": "git+https://github.com/chr1sp1n/drussets.git"
+  },
+  "dependencies": {
+    "jquery": "^3.4",
+    "bootstrap": "^4.3"
+  }
+}

@@ -1,0 +1,36 @@
+{
+	"path":{
+		"temp": "./.tmp",
+		"dev": 	"../../../web/themes/custom/derby_theme",
+		"dist": "../../../web/themes/custom/derby_theme"
+	},
+	"assets":{
+		"path": "./src",
+		"libraries": "/libraries"
+	},
+	"css":{
+		"src": "./src/libraries",
+		"sass":{
+			"exclude": []
+		}
+	},
+	"js":{
+		"src": 	"./src/libraries",
+		"libraries": {},
+		"babel":{
+			"config":{
+				"presets": [
+					"@babel/env", {}
+				]
+			},
+			"exclude": []
+		}
+	},
+	"browser":{
+		"sync": true,
+		"config": {
+			"browser": "google chrome",
+			"reloadDebounce": 500
+		}
+	}
+}
