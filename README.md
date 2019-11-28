@@ -10,12 +10,12 @@ Initialization:
 
 ___
 
-To start a new theme:
+To create a new theme:
 - execute: ```composer derby-generate-theme {theme-name}``` with theme name as parameter. New theme will be generated in ```development/themes/``` folder.
 - change directory to: ```development/themes/{theme-machine-name}```
 - execute: ```npm install```
 
-To start a new module:
+To create a new module:
 - execute: ```composer derby-generate-module {theme-name}``` with module name as parameter. New module will be generated in ```development/themes/``` folder.
 - change directory to: ```development/modules/{theme-machine-name}```
 - execute: ```npm install``
@@ -28,4 +28,4 @@ To push new theme or module on Drupal webroot use Drussets utility with followin
 
 
 TO-TO:
-- Set files and folder permission for unix based os;
+- Set files and folder permission in unix based os;
