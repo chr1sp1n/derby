@@ -1,6 +1,0 @@
-name: derby_theme
-type: module
-description: derby_theme module
-version: '1.0'
-core: '8.x'
-project: Custom
