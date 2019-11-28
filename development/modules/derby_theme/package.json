@@ -14,8 +14,4 @@
   "devDependencies": {
     "@chr1sp1n-dev/drussets": "git+https://github.com/chr1sp1n/drussets.git"
   },
-  "dependencies": {
-    "jquery": "^3.4",
-    "bootstrap": "^4.3"
-  }
 }

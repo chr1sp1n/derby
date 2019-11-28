@@ -1,0 +1,7 @@
+derby_theme.settings:
+  path: '/admin/config/derby_theme'
+  defaults:
+    _form: '\Drupal\derby_theme\Form\ConfigurationForm'
+    _title: 'derby_theme configuration'
+  requirements:
+    _permission: 'administer site configuration'

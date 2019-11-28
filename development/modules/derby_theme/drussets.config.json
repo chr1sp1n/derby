@@ -1,8 +1,8 @@
 {
 	"path":{
 		"temp": "./.tmp",
-		"dev": 	"../../../web/themes/custom/__theme_name__",
-		"dist": "../../../web/themes/custom/__theme_name__"
+		"dev": 	"../../../web/modules/custom/derby_theme",
+		"dist": "../../../web/modules/custom/derby_theme"
 	},
 	"assets":{
 		"path": "./src",

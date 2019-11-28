@@ -1,12 +1,12 @@
 {
 	"path":{
 		"temp": "./.tmp",
-		"dev": 	"../../../web/themes/custom/derby_theme",
-		"dist": "../../../web/themes/custom/derby_theme"
+		"dev": 	"../../../web/modules/custom/__theme_name__",
+		"dist": "../../../web/modules/custom/__theme_name__"
 	},
 	"assets":{
 		"path": "./src",
-		"libraries": "/libraries"
+		"libraries": "./src/libraries"
 	},
 	"css":{
 		"src": "./src/libraries",

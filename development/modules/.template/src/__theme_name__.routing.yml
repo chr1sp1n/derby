@@ -1,0 +1,7 @@
+__theme_name__.settings:
+  path: '/admin/config/__theme_name__'
+  defaults:
+    _form: '\Drupal\__theme_name__\Form\ConfigurationForm'
+    _title: '__theme_name__ configuration'
+  requirements:
+    _permission: 'administer site configuration'

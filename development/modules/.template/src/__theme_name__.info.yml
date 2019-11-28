@@ -1,0 +1,6 @@
+name: __theme_name__
+type: module
+description: __theme_name__ module
+version: '1.0'
+core: '8.x'
+project: Custom

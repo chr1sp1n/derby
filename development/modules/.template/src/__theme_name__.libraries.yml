@@ -1,0 +1,6 @@
+__theme_name__:
+  css:
+    base:
+      libraries/global/css/__theme_name__.css: {}
+  js:
+    libraries/global/js/__theme_name__.js: {}

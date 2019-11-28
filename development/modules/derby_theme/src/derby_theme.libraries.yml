@@ -1,0 +1,6 @@
+derby_theme:
+  css:
+    base:
+      libraries/global/css/derby_theme.css: {}
+  js:
+    libraries/global/js/derby_theme.js: {}

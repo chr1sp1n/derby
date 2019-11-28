@@ -1,27 +1,24 @@
 
-DERBY - Drupal toolkit
-v1.0 - 2019-11-26
-
+### DERBY - Drupal toolkit
+v1.0.1 - 2019-11-28
 
 Initialization:
+- clone repository ```git clone https://github.com/chr1sp1n/derby.git```
 - execute ```composer install```
 - import ```init/derby.init-db.sql``` in your db engine
 - edit ```.env``` file with your database references
 
+___
+
 To start a new theme:
-- change directory to ```development/themes```
-- execute: ```init-theme.bat``` with new theme name as parameter. New theme name must be composed by lowercased words separated by underscore.
+- execute: ```composer derby-generate-theme {theme-name}``` with theme name as parameter.
+New theme will be generated in ```development/themes/``` folder.
 
 To start a new module:
-- change directory to ```development/themes```
-- execute: ```init-module.bat``` with new theme name as parameter. New theme name must be composed by lowercased words separated by underscore.
+- execute: ```composer derby-generate-module {theme-name}``` with module name as parameter.
+New module will be generated in ```development/themes/``` folder.
 
-
-Modules and themes are equipped with Drussets utility tool. Below enabled commands:
-- ```npm run dev``` (build theme in development mode)
-- ```npm run dist``` (build theme in distribution mode)
-- ```npm run watch``` (build theme every time a file or folder has been changed)
-
-
-vendor/bin/drush php-eval 'echo \Drupal\Component\Utility\Crypt::randomBytesBase64(55)' > sites/default/salt.txt
-vendor/bin/drush config-set system.file path.temporary ../tmp -y
+To push new theme or module on Drupal webroot use Drussets utility with following commands:
+- ```npm run dev``` (build theme or module in development mode)
+- ```npm run dist``` (build theme or module in distribution mode)
+- ```npm run watch``` (build theme or module every changes to files or folders)

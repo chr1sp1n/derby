@@ -52,6 +52,14 @@ class Derby {
   protected static $themeDevelopmentFolder = 'development/themes';
 
   /**
+   * Module development folder,
+   *
+   * @var string
+   */
+  protected static $moduleDevelopmentFolder = 'development/modules';
+
+
+  /**
    * Theme template folder.
    *
    * @var string
@@ -63,7 +71,7 @@ class Derby {
    *
    * @var string
    */
-  protected static $moduleTemplateFolder = '.module';
+  protected static $moduleTemplateFolder = '.template';
 
   /**
    * Derby initialization script.
@@ -119,15 +127,13 @@ class Derby {
 
     self::showBanner();
 
-
     $args = $event->getArguments();
     if(empty($args)){
       echo "[ERRO] Parameter theme name needed." . PHP_EOL;
       exit();
     }
 
-
-    if($machineName = self::cloneFolderAndFiles($args[0], self::$themeTemplateFolder, $event)){
+    if( $machineName = self::cloneFolderAndFiles($args[0], self::$themeDevelopmentFolder, self::$themeTemplateFolder, $event) ){
       echo "[.OK.] Generated theme with machine name: " . $machineName . PHP_EOL;
       echo "[INFO] Change directory to generated theme and execute 'npm install'." . PHP_EOL;
     }else{
@@ -145,6 +151,7 @@ class Derby {
    *   Composer event.
    */
   public static function generateModule(Event $event) {
+
     self::showBanner();
 
     $args = $event->getArguments();
@@ -153,7 +160,7 @@ class Derby {
       exit();
     }
 
-    if($machineName = self::cloneFolderAndFiles($args[0], self::$moduleTemplateFolder, $event)){
+    if( $machineName = self::cloneFolderAndFiles($args[0], self::$moduleDevelopmentFolder, self::$moduleTemplateFolder, $event) ){
       echo "[.OK.] Generated module with machine name: " . $machineName . PHP_EOL;
       echo "[INFO] Change directory to generated module and execute 'npm install'." . PHP_EOL;
     }else{
@@ -172,7 +179,7 @@ class Derby {
    * @param Event $event
    * @author chr1sp1n-dev <chr1sp1n.dev@gmail.com>
    */
-  private static function cloneFolderAndFiles(string $name, string $themeTemplateFolder, Event $event){
+  private static function cloneFolderAndFiles(string $name, string $developmentFolder, string $templateFolder, Event $event){
     $error = false;
 
     $vendorDirectory = $event->getComposer()->getConfig()->get('vendor-dir');
@@ -186,23 +193,21 @@ class Derby {
     $machineName = $stringConverter->camelCaseToMachineName($name);
     $machineName = $stringConverter->createMachineName($machineName);
 
-    // echo $drupalRoot . '/../' . self::$themeDevelopmentFolder . '/' . $machineName . \PHP_EOL;
-    // exit();
-    $newPath = $drupalRoot . '/../' . self::$themeDevelopmentFolder . '/' . $machineName;
+    $newPath = $drupalRoot . '/../' . $developmentFolder . '/' . $machineName;
     if( file_exists($newPath) ){
       echo "[ERRO] Folder with specified name already exists. Path: " . $newPath . PHP_EOL;
       return FALSE;
     }
 
-    $directory = new \RecursiveDirectoryIterator(self::$themeDevelopmentFolder . '/' . $themeTemplateFolder);
+    $directory = new \RecursiveDirectoryIterator( $drupalRoot . '/../' . $developmentFolder . '/' . $templateFolder );
     $iterator = new \RecursiveIteratorIterator($directory);
 
     foreach ($iterator as $filePath) {
       if( $filePath->isDir() ){
-        $path = str_replace( $themeTemplateFolder, $machineName, $filePath->getPathname() );
-        $path = $drupalRoot . '/../' . $path;
-        if( !file_exists($path) ){
-          if(mkdir( $path, 0775, true ) !== FALSE){
+        $path = str_replace( $templateFolder, $machineName, $filePath->getPathname() );
+        $path = str_replace( self::$replaceString, $machineName, $path );
+        if( !file_exists( $path ) ){
+          if( mkdir( $path, 0775, true ) !== FALSE ){
             echo "[INFO] Created folder: " . $path . PHP_EOL;
           }else{
             echo "[ERRO] An error occurred while creating the folder: " . $path . PHP_EOL;
@@ -216,9 +221,9 @@ class Derby {
       if( !$filePath->isDir() ){
         $file = $filePath->getPathname();
         $data = file_get_contents($file);
-        $data = str_replace(self::$replaceString, $machineName, $data);
-        $file = str_replace( $themeTemplateFolder, $machineName, $file);
-        $fileTheme = $drupalRoot . '/../' . str_replace(self::$replaceString, $machineName, $file);
+        $data = str_replace( self::$replaceString, $machineName, $data);
+        $file = str_replace( $templateFolder, $machineName, $file);
+        $fileTheme = str_replace( self::$replaceString, $machineName, $file);
         if(!file_exists($fileTheme)){
           if(file_put_contents($fileTheme, $data) !== FALSE){
             echo "[INFO] Created file: " . $fileTheme . PHP_EOL;
@@ -243,7 +248,7 @@ class Derby {
          Y888 888 888   , 888    888 888P   Y8b Y
           "88 888  "YeeP" 888    888 88"     888
                                              888
-                          hibo © - v1.0.1    888
+                                   v1.0.1    888
 
 
 DERBY;
