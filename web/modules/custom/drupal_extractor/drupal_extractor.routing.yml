@@ -1,0 +1,7 @@
+drupal_extractor.settings:
+  path: '/admin/config/drupal_extractor'
+  defaults:
+    _form: '\Drupal\drupal_extractor\Form\ConfigurationForm'
+    _title: 'drupal_extractor configuration'
+  requirements:
+    _permission: 'administer site configuration'

@@ -1,0 +1,6 @@
+name: drupal_extractor
+type: module
+description: drupal_extractor module
+version: '1.0'
+core: '8.x'
+project: Custom

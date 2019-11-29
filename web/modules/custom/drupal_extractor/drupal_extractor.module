@@ -1,0 +1,22 @@
+<?php
+
+use Drupal\drupal_extractor\Extractors\Entities;
+
+//1°
+function drupal_extractor_preprocess_node (&$variables){
+
+}
+
+//2°
+function drupal_extractor_preprocess_html(&$variables){
+
+}
+
+//3°
+function drupal_extractor_preprocess_page(&$variables){
+
+  Entities\Node::get($variables);
+
+  var_dump($variables['fields']);
+
+}

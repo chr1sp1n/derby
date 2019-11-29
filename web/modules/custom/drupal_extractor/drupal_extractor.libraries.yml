@@ -1,0 +1,6 @@
+drupal_extractor:
+  css:
+    base:
+      libraries/global/css/drupal_extractor.css: {}
+  js:
+    libraries/global/js/drupal_extractor.js: {}
